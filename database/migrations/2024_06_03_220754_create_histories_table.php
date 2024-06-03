@@ -11,19 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('histories', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->uuid('model_id');
 
-            $table->string('last_name', 40))->nullable();
-            $table->string('name', 40))->nullable();
-            $table->string('middle_name', 40))->nullable();
+            $table->string('model_name', 250))->nullable();
 
-            $table->string('email', 80)->unique();
-            $table->string('phone', 20))->nullable();
+            $table->json('before')->nullable();
+            $table->json('after')->nullable();
+
+            $table->enum('action', ['on', 'off'])->default('off');
 
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
-        });
+       });
     }
 
     /**
@@ -31,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('histories');
     }
 };
