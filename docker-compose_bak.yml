@@ -51,6 +51,36 @@ services:
                 - '-p${DB_PASSWORD}'
             retries: 3
             timeout: 5s
+    php:
+        build: null
+        volumes:
+            - './src:/var/www/html'
+        expose:
+            - '9000'
+    composer:
+        image: 'composer:latest'
+        volumes:
+            - './src:/var/www/html'
+        working_dir: /var/www/html
+        depends_on:
+            - php
+    npm:
+        image: 'node:13.7'
+        volumes:
+            - './src:/var/www/html'
+        working_dir: /var/www/html
+        entrypoint:
+            - npm
+    artisan:
+        build: null
+        volumes:
+            - './src:/var/www/html'
+        depends_on:
+            - mariadb
+        working_dir: /var/www/html
+        entrypoint:
+            - php
+            - /var/www/html/artisan
     redis:
         image: 'redis:alpine'
         ports:

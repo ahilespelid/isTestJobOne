@@ -15,7 +15,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->uuid('model_id');
 
-            $table->string('model_name', 250))->nullable();
+            $table->string('model_name', 250)->nullable();
 
             $table->json('before')->nullable();
             $table->json('after')->nullable();
