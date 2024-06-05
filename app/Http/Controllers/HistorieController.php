@@ -11,8 +11,19 @@ class HistorieController extends Controller
     use ReflactionNameMethod;
     public function index(Request $request, Historie $historie)
     {
+        //Используем редис для кеша
+        $historieAt = ($isEmptyCache = empty($historieCache = Cache::get('$historieAll')) ?
+                        $historie->all()->toArray() :
+                        $historieCache);
+
+        // Кэширование значения
+        if($isEmptyCache){
+            Cache::put('$historieAll', $historieAt, 600);
+        }
+
+
         return view('listHistories', [
-            'histories' => $historie->all()->toArray(),
+            'histories' => $historieAt,
             'order'     => (('asc' == ($request->order ?? 'desc')) ? 'desc' : 'asc')
         ]);
     }

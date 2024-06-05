@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Historie;
 use App\Models\User;
 use App\Traits\ReflactionNameMethod;
+use App\Services\HistorieManager;
 
 class AuthController extends Controller
 {
@@ -28,13 +29,10 @@ class AuthController extends Controller
                     ->where('pass', Hash::make($request->pass))->first();
         //Пишем историю
         if($user->exist()){
-            Historie::create([
-                'model_id'   => $user->id,
-                'model_name' => $this->modeficationModel.' '.$this->getNameMethod(),
-                'before'     => json_encode($user->toArray()),
-                'after'      => json_encode($user->toArray()),
-                'action'     => 'on',
-            ]);
+            HistorieManager->logAdd($user->id,
+                                    $this->modeficationModel.' '.$this->getNameMethod(),
+                                    json_encode($user->toArray()),
+                                    json_encode($user->toArray()));
         }
 
         //Вернули ответ
@@ -69,13 +67,10 @@ class AuthController extends Controller
 
         //Пишем историю
         if($user->exist()){
-            Historie::create([
-                'model_id'   => $user->id,
-                'model_name' => $this->modeficationModel.' '.$this->getNameMethod(),
-                'before'     => json_encode([]),
-                'after'      => json_encode($user->toArray()),
-                'action'     => 'on',
-            ]);
+            HistorieManager->logAdd($user->id,
+                                    $this->modeficationModel.' '.$this->getNameMethod(),
+                                    json_encode([]),
+                                    json_encode($user->toArray()));
         }
 
         // Ответ с токеном
@@ -103,13 +98,10 @@ class AuthController extends Controller
 
         //Пишем историю
         if($userBefore->exist() && $user->exist()){
-            Historie::create([
-                'model_id'   => $user->id,
-                'model_name' => $this->modeficationModel.' '.$this->getNameMethod(),
-                'before'     => json_encode($userBefore->toArray()),
-                'after'      => json_encode($user->toArray()),
-                'action'     => 'on',
-            ]);
+            HistorieManager->logAdd($user->id,
+                                    $this->modeficationModel.' '.$this->getNameMethod(),
+                                    json_encode($userBefore->toArray()),
+                                    json_encode($user->toArray()));
         }
 
         //Вернули ответ
