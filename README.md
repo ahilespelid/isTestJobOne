@@ -1,66 +1,85 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
-
-## About Laravel
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Тестовое задание (ТЗ)<br/> 
+<br/> 
+Требуется написать REST FULL API сервис со следующим функционалом:<br/> 
+<br/> 
+1.1 Публичные маршруты (доступны всем не авторизованным пользователям):<br/> 
+1.2 Регистрация пользователя<br/> 
+1.3 Авторизация пользователя<br/> 
+1.4 Сброс пароля пользователя<br/> 
+<br/> 
+1.5 Приватные маршруты (доступны только после авторизации пользователя):<br/> 
+1.5.1   Просмотр списка пользователей<br/> 
+1.5.2   Просмотр пользователя<br/> 
+1.5.3   Редактирование пользователя<br/> 
+1.5.4   Удаление пользователя в корзину<br/> 
+1.5.6   Просмотр списка пользователей в корзине (удаленные в корзину)<br/> 
+1.5.7   Восстановление пользователя из корзины<br/> 
+1.5.8   Полное удаление пользователя из БД (база данных)<br/> 
+1.5.9   Групповое удаление пользователей в корзину<br/> 
+1.5.10 Групповое удаление пользователей из БД<br/> 
+1.5.11 Групповое восстановление пользователей из корзины<br/> 
+<br/> 
+3. Вести полное логирование действий с пользователями в БД (таблица histories) <br/> 
+<br/> 
+<br/> 
+Требования<br/> 
+<br/> 
+2.1 Сервис должен быть написан с использованием фреймворка Laravel версии не ниже 10.0<br/> 
+2.2 Использовать php версии не ниже 8.2<br/> 
+2.3 Применить подход тонких контроллеров.<br/> 
+2.4 Максимально декомпозировать код (выделение возможного повторяющегося кода в трейты и абстрактные классы).<br/> 
+2.5 В качестве id (идентификатора записи в БД) использовать строковое представление uuid6<br/> 
+2.6 Использовать Redis для кеширования объектов и снижения нагрузки на БД<br/> 
+2.7 Обеспечить целостность данных БД путем обработки транзакций и внешних ключей (по возможности)<br/> 
+2.8 Написать фабрики для наполнения БД тестовыми (фейковыми) данными<br/> 
+2.9 Вынести бизнес-логику в сервисный слой <br/> 
+2.10 Ответ от сервиса возвращать в формате json либо xml (будет плюсом реализация всех вариантов ответа)<br/> 
+2.11 При просмотре листинга пользователей реализовать возможность фильтров и сортировки по всем полям таблицы<br/> 
+2.12 Допускается использование встроенных библиотек фреймворка<br/> 
+Структура таблиц<br/> 
+<br/> 
+users<br/> 
+id    uuid<br/> 
+last_name    varchar(40)<br/> 
+name    varchar(40)<br/> 
+middle_name    varchar(40)<br/> 
+email    varchar(80)<br/> 
+phone    varchar(20)<br/> 
+deleted_at    timestamp<br/> 
+created_at    timestamp<br/> 
+updated_at    timestamp<br/> 
+    histories<br/> 
+id    uuid<br/> 
+model_id    uuid<br/> 
+model_name    varchar(250)<br/> 
+before    json<br/> 
+after    json<br/> 
+action    enum<br/> 
+deleted_at    timestamp<br/> 
+created_at    timestamp<br/> 
+updated_at    timestamp<br/> 
+<br/> 
+<br/> 
+Информация по проекту для кандидата<br/> 
+4.1 Максимальное время на выполнение ТЗ - 12 часов<br/> 
+4.2 После инициализации проекта в локальной среде, его необходимо залить в публичный репозиторий github.com в своем аккаунте и сразу после этого предоставить ссылку в telegram на данный репозиторий нашему тим-лиду проекта<br/> 
+4.3 В случае невозможности выполнения ТЗ за один день, сообщать нашему тим-лиду время и что удалось сделать за данный промежуток времени, после того как залили код в репозиторий, для возможности отслеживания изменений по коммитам.<br/> 
+<br/> 
+Дополнительное задание (будет плюсом)<br/> 
+<br/> 
+Реализовать приватные маршруты по аналогии с частью маршрутов из пункта 1.5<br/> 
+<br/> 
+5.1 Реализовать листинг, просмотр сущности, удаление в корзину, полное удаление записи из БД с сущностями таблицы histories<br/> 
+5.2 Возможность восстановления модели к состоянию из таблицы  histories<br/> 
+5.3 Реализовать консольные команды по пунктам 5.1 и 5.2<br/> 
+<br/> 
+<br/> 
+<br/> 
+Рекомендации (будет плюсом)<br/> 
+6.1 Код должен быть само-документируемый с применением тайпхинтов и PSR.<br/> 
+6.2 Уделить большое внимание чистоте и качеству кода <br/> 
+6.3 Контейнеризация проекта (docker), для быстрого развертывания<br/> 
+6.4 К ТЗ применить паттерны DRY, KISS, YANGI<br/> 
+6.5 Ведение документации в Swager<br/> 
+6.6 Применить в проекте возможность версионирования API<br/> 
+6.7 При форматировании кода рекомендуется использование библиотеки laravel/pint
